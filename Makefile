@@ -75,7 +75,7 @@ doc:
 .PHONY: install update
 install: $(OS)_install doc
 	$(MAKE) $(PIP)
-	$(MAKE)   update
+	$(MAKE) update
 update: $(OS)_update
 	$(PIP) install -U    pytest autopep8
 	$(PIP) install -U -r requirements.txt
