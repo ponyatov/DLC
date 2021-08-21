@@ -1,0 +1,14 @@
+{% extends 'all.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/highlight.css">
+{% endblock %}
+
+{% block body %}
+<pre id="dump" class="dump">{{ env.dump() }}</pre>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pegjs/0.8.0/peg.min.js"></script>
+<script src="/static/highlight.js"></script>
+{% endblock %}

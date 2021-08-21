@@ -50,9 +50,18 @@ all: $(PY) $(MODULE).py
 	$(MAKE) test format
 	$^ $@
 
+.PHONY: web
+web: $(PY) $(MODULE).py
+	$(MAKE) test format
+	$^ $@
+	$(MAKE) $@
+
 .PHONY: repl
 repl: $(PY) $(MODULE).py
+	$(MAKE) test format
 	$(PY) -i $(MODULE).py $@
+	stty echo
+	$(MAKE) $@
 
 .PHONY: test
 test: $(PYT) test_$(MODULE).py
@@ -93,6 +102,7 @@ $(PY) $(PIP) $(PYT) $(PEP):
 # \ merge
 MERGE  = Makefile README.md apt.* .gitignore $(S)
 MERGE += .vscode bin doc lib src tmp
+MERGE += requirements.txt static templates
 
 .PHONY: dev
 dev:

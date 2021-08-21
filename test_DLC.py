@@ -23,3 +23,20 @@ def test_shifts():
         '\n\tobject = <object:left>' +\
         '\n\tright = <object:right>' +\
         '\n\t0: <object:World>'
+
+
+def test_env():
+    assert glob['env'].head(test=True) == '<env:global>'
+    assert glob['global'].head(test=True) == '<env:global>'
+
+def test_nop():
+    assert glob['nop'].eval(glob) is None
+
+
+def test_lexer_none():
+    lexer.input('')
+    assert not lexer.token()
+
+def test_lexer_spaces():
+    lexer.input(' \t\r\n')
+    assert not lexer.token()
